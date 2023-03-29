@@ -1,6 +1,11 @@
 const mongoose = require('mongoose');
+require('dotenv').config();
 
-mongoose.connect('mongodb://localhost/Todo_Task');
+
+mongoose.connect(process.env.DB_CONNECTION_STRING,{
+    useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
 const db =mongoose.connection;
 db.on('error',console.error.bind(console,"Error in connecting to mongoDB"));
